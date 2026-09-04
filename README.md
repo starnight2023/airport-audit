@@ -31,22 +31,15 @@
 - Docker Compose 一键部署，数据与向量库持久化
 ## 系统架构
 
-稽核工作流基于 **LangGraph** 构建 Agent 状态机，全流程仅 **2 次 LLM 调用**（Planner 决策 + Report 生成），中间环节全部由确定性代码执行，从架构上根除金额幻觉风险。
+稽核工作流基于 LangGraph 构建 Agent 状态机，全流程仅 2 次 LLM 调用（Planner 决策 + Report 生成），中间环节全部由确定性代码执行，从架构上根除金额幻觉风险。
 
 工作流分为四个阶段：
 
 - **Planner（规划层）**：根据合同类型自动规划稽核路径，决定需执行的校验项；
-- **Executor（执行层）**：依次调用营收查询、条款检索等工具。其中条款检索采用 **Agentic RAG** 管线，经 Query 改写 → 向量 + BM25 多路召回 → 三因子精排后，返回 Top-K 条款供后续引用；
-- **RuleCheck（校验层）**：调用确定性规则引擎，完成金额复算与逾期校验。金额计算走 `clause_id` 精确取条款的确定性路径，**完全不依赖检索排序**，也完全不经过 LLM；
+- **Executor（执行层）**：依次调用营收查询、条款检索等工具。其中条款检索采用 Agentic RAG 管线，经 Query 改写 → 向量 + BM25 多路召回 → 三因子精排后，返回 Top-K 条款供后续引用；
+- **RuleCheck（校验层）**：调用确定性规则引擎，完成金额复算与逾期校验。金额计算走 `clause_id` 精确取条款的确定性路径，完全不依赖检索排序，也完全不经过 LLM；
 - **Report（报告层）**：基于规则引擎的复算结果与检索到的条款上下文，生成结构化稽核报告。
 
-**架构亮点**
-
-- **全流程仅 2 次 LLM 调用**：Planner 决策 + Report 生成，中间环节零 LLM 参与
-- **金额计算 100% 确定性**：`clause_id` 精确取条款 + 规则引擎复算，完全剥离 LLM
-- **检索 Top-1 命中率 90%**：Agentic RAG 管线保障条款召回质量
-
-检索增强与自动化评测的详细设计，分别见「检索与知识库」与「自动化评测」章节。
 
 ## 技术栈
 
@@ -108,8 +101,8 @@ audit/
 ### 安装
 
 ```bash
-git clone https://github.com/starnight2023/audit.git
-cd audit
+git clone https://github.com/starnight2023/airport-audit-public.git
+cd airport-audit-public
 pip install -r requirements.txt
 ```
 
