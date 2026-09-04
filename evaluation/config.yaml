@@ -1,0 +1,34 @@
+# =============================================================================
+# evaluation/config.yaml — 生成式评测配置
+# =============================================================================
+evaluation:
+  # 评测规模：None=全部 600 条（50 商户 × 12 月）
+  max_cases: 600
+
+  # 是否调用 LLM 生成真实报告（false 时用规则引擎降级报告跑通链路）
+  use_llm_report: true
+
+  # 是否启用 LLM Judge 第二层语义蕴含判定（默认关闭：本数据下集合比对已足够）
+  use_llm_judge: false
+
+  # 缓存：报告 / 抽取 / 判定结果落盘，支持断点续跑与重跑
+  cache_enabled: true
+  cache_dir: evaluation/cache
+
+  # 输出目录
+  output_dir: evaluation/output
+
+  # LLM Judge 参数（仅 use_llm_judge=true 时生效）
+  judge_model: deepseek-chat
+  judge_temperature: 0
+  retry_times: 2
+
+  # 金额比对容差（比例）与最小异常金额，与 config/rules.yaml 保持一致
+  amount_tolerance: 0.01
+  min_anomaly_amount: 0.01
+
+  # 单 case 失败是否中断（false=跳过继续）
+  abort_on_error: false
+
+  # 是否打印逐 case 详情
+  verbose: false

@@ -1,0 +1,109 @@
+# =============================================================================
+# 机场非航收入智能稽核系统 — 规则配置文件
+# =============================================================================
+# 作用：将计费规则与代码逻辑解耦，修改规则无需改代码。
+# 后续阶段拓展位：
+#   Phase 2 (RAG): 可在此添加检索相关配置（top_k、相似度阈值）
+#   Phase 3 (Agent): 可在此添加最大推理步数、LLM参数
+#   Phase 4 (FastAPI): 可在此添加服务端口、超时配置
+#   Phase 6 (Docker): 可在此添加环境变量引用
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# 1. 账单提交规则
+# ---------------------------------------------------------------------------
+submission:
+  deadline_day: 5               # 每月5日前需提交上月营业报表
+  grace_days: 3                 # 宽限期天数（超过deadline+grace视为逾期）
+  late_fee_rate: 0.005          # 逾期滞纳金：每日 0.5%
+
+# ---------------------------------------------------------------------------
+# 2. 金额校验规则
+# ---------------------------------------------------------------------------
+validation:
+  # 金额比对的浮点容差（百分比），避免浮点精度导致误判
+  # 例如 0.01 表示 1% 以内的差异视为正常
+  amount_tolerance: 0.01
+
+  # 营业额波动告警阈值：与历史均值相比超过此百分比时标记"需人工复核"
+  # 未来 Phase 3 Agent 可用此字段触发深度检索
+  revenue_variance_threshold: 0.3
+
+  # 最小异常金额（低于此值的差异不记录，减少噪音）
+  min_anomaly_amount: 0.01
+
+# ---------------------------------------------------------------------------
+# 3. 合同类型及对应校验字段
+# ---------------------------------------------------------------------------
+contract_types:
+  fixed:
+    description: "固定租金合同"
+    formula: "paid_amount == fixed_amount"
+    check_fields: ["paid_amount"]
+    clauses:
+      - id: "rent_calculation"
+        description: "固定租金计算"
+      - id: "submission_deadline"
+        description: "报表提交截止日"
+
+  commission:
+    description: "营业额提成合同"
+    formula: "paid_amount == reported_revenue × commission_rate"
+    check_fields: ["paid_amount", "commission_rate", "reported_revenue"]
+    clauses:
+      - id: "rent_calculation"
+        description: "营业额提成计算"
+      - id: "submission_deadline"
+        description: "报表提交截止日"
+
+  hybrid:
+    description: "保底+提成合同"
+    formula: "paid_amount == max(min_guarantee, reported_revenue × commission_rate)"
+    check_fields: ["paid_amount", "min_guarantee", "commission_rate", "reported_revenue"]
+    clauses:
+      - id: "rent_calculation"
+        description: "保底与提成取高值计算"
+      - id: "submission_deadline"
+        description: "报表提交截止日"
+      - id: "revenue_threshold"
+        description: "营业额达标线（超过保底额对应营收）"
+
+# ---------------------------------------------------------------------------
+# 4. 评测配置
+# ---------------------------------------------------------------------------
+evaluation:
+  # 正常/异常判定阈值（规则引擎标记为异常的敏感度）
+  strict_mode: false            # true=严格要求完全匹配，false=允许容差
+
+# ---------------------------------------------------------------------------
+# 5. 后续阶段预留配置位（当前置空）
+# ---------------------------------------------------------------------------
+# Phase 2 预留：向量检索配置
+rag:
+  enabled: true                  # Phase 2 已启用
+  top_k: 3
+  similarity_threshold: 0.7
+  embedding_model: "BAAI/bge-small-zh-v1.5"
+  collection_name: "contract_clauses"
+
+# Phase 2 预留：缓存配置
+cache:
+  enabled: true
+  backend: "memory"              # memory（本地） / redis（需部署 Redis 服务）
+  ttl_seconds: 300
+  host: "localhost"
+  port: 6379
+
+# Phase 3 预留：Agent配置
+agent:
+  enabled: true                   # Phase 3 已启用
+  max_steps: 4                    # 状态机步骤数（Planner→Executor→RuleCheck→Report）
+  llm_model: "deepseek-chat"
+  llm_temperature: 0.1            # 低温度确保输出稳定
+  max_tool_calls: 3               # 最多调用3个工具
+
+# Phase 4 预留：服务配置
+service:
+  api_host: "0.0.0.0"
+  api_port: 8000
+  streamlit_port: 8501

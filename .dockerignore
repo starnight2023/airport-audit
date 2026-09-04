@@ -1,0 +1,34 @@
+# =============================================================================
+# .dockerignore — Docker 构建上下文排除
+# =============================================================================
+# 安全：防止 .env（含 API Key）、本地数据、向量库进入镜像或构建上下文
+# =============================================================================
+
+# 敏感文件（含 API Key）
+.env
+
+# 本地数据（容器启动时由 init_data.py 生成）
+data/bills/
+data/contracts.json
+data/merchant_info.json
+data/truth_labels.json
+data/historical_disputes.json
+
+# 向量数据库（容器启动时由 init_data.py 重建）
+chroma_db/
+
+# 虚拟环境与缓存
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Git
+.git/
+.gitignore
+
+# IDE 与系统文件
+.DS_Store
+.idea/
+.vscode/

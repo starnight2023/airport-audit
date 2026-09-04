@@ -1,0 +1,1035 @@
+[
+  {
+    "contract_id": "CTR-BM001",
+    "merchant_id": "BM001",
+    "merchant_name": "边界测试商户A（提成）",
+    "type": "commission",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.1443,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM001-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 申报营业额 × 14.43%",
+        "parameters": {
+          "commission_rate": 0.1443
+        }
+      },
+      {
+        "clause_id": "CTR-BM001-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM001-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM002",
+    "merchant_id": "BM002",
+    "merchant_name": "边界测试商户B（保底+提成）",
+    "type": "hybrid",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.12,
+    "min_guarantee": 8000.0,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM002-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = max(保底8000元, 申报营业额 × 12%)",
+        "parameters": {
+          "commission_rate": 0.12,
+          "min_guarantee": 8000.0
+        }
+      },
+      {
+        "clause_id": "CTR-BM002-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM002-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM003",
+    "merchant_id": "BM003",
+    "merchant_name": "边界测试商户C（固定租金）",
+    "type": "fixed",
+    "category": "边界测试",
+    "fixed_amount": 10000.0,
+    "commission_rate": 0.0,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM003-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：固定月租金 10000 元",
+        "parameters": {
+          "fixed_amount": 10000.0
+        }
+      },
+      {
+        "clause_id": "CTR-BM003-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM003-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM004",
+    "merchant_id": "BM004",
+    "merchant_name": "边界测试商户D（提成）",
+    "type": "commission",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.1,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM004-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 申报营业额 × 10%",
+        "parameters": {
+          "commission_rate": 0.1
+        }
+      },
+      {
+        "clause_id": "CTR-BM004-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM004-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM005",
+    "merchant_id": "BM005",
+    "merchant_name": "边界测试商户1（提成）",
+    "type": "commission",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.1,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM005-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 申报营业额 × 10.00%",
+        "parameters": {
+          "commission_rate": 0.1
+        }
+      },
+      {
+        "clause_id": "CTR-BM005-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM005-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM006",
+    "merchant_id": "BM006",
+    "merchant_name": "边界测试商户2（提成）",
+    "type": "commission",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.115,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM006-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 申报营业额 × 11.50%",
+        "parameters": {
+          "commission_rate": 0.115
+        }
+      },
+      {
+        "clause_id": "CTR-BM006-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM006-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM007",
+    "merchant_id": "BM007",
+    "merchant_name": "边界测试商户3（提成）",
+    "type": "commission",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.125,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM007-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 申报营业额 × 12.50%",
+        "parameters": {
+          "commission_rate": 0.125
+        }
+      },
+      {
+        "clause_id": "CTR-BM007-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM007-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM008",
+    "merchant_id": "BM008",
+    "merchant_name": "边界测试商户4（提成）",
+    "type": "commission",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.135,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM008-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 申报营业额 × 13.50%",
+        "parameters": {
+          "commission_rate": 0.135
+        }
+      },
+      {
+        "clause_id": "CTR-BM008-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM008-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM009",
+    "merchant_id": "BM009",
+    "merchant_name": "边界测试商户5（提成）",
+    "type": "commission",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.145,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM009-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 申报营业额 × 14.50%",
+        "parameters": {
+          "commission_rate": 0.145
+        }
+      },
+      {
+        "clause_id": "CTR-BM009-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM009-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM010",
+    "merchant_id": "BM010",
+    "merchant_name": "边界测试商户6（提成）",
+    "type": "commission",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.155,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM010-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 申报营业额 × 15.50%",
+        "parameters": {
+          "commission_rate": 0.155
+        }
+      },
+      {
+        "clause_id": "CTR-BM010-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM010-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM011",
+    "merchant_id": "BM011",
+    "merchant_name": "边界测试商户7（提成）",
+    "type": "commission",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.16,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM011-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 申报营业额 × 16.00%",
+        "parameters": {
+          "commission_rate": 0.16
+        }
+      },
+      {
+        "clause_id": "CTR-BM011-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM011-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM012",
+    "merchant_id": "BM012",
+    "merchant_name": "边界测试商户8（保底+提成）",
+    "type": "hybrid",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.1,
+    "min_guarantee": 6000,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM012-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = max(6000.00, 申报营业额 × 10.00%)",
+        "parameters": {
+          "commission_rate": 0.1,
+          "min_guarantee": 6000
+        }
+      },
+      {
+        "clause_id": "CTR-BM012-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM012-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM013",
+    "merchant_id": "BM013",
+    "merchant_name": "边界测试商户9（保底+提成）",
+    "type": "hybrid",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.105,
+    "min_guarantee": 7000,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM013-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = max(7000.00, 申报营业额 × 10.50%)",
+        "parameters": {
+          "commission_rate": 0.105,
+          "min_guarantee": 7000
+        }
+      },
+      {
+        "clause_id": "CTR-BM013-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM013-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM014",
+    "merchant_id": "BM014",
+    "merchant_name": "边界测试商户10（保底+提成）",
+    "type": "hybrid",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.12,
+    "min_guarantee": 8000,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM014-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = max(8000.00, 申报营业额 × 12.00%)",
+        "parameters": {
+          "commission_rate": 0.12,
+          "min_guarantee": 8000
+        }
+      },
+      {
+        "clause_id": "CTR-BM014-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM014-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM015",
+    "merchant_id": "BM015",
+    "merchant_name": "边界测试商户11（保底+提成）",
+    "type": "hybrid",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.125,
+    "min_guarantee": 9000,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM015-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = max(9000.00, 申报营业额 × 12.50%)",
+        "parameters": {
+          "commission_rate": 0.125,
+          "min_guarantee": 9000
+        }
+      },
+      {
+        "clause_id": "CTR-BM015-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM015-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM016",
+    "merchant_id": "BM016",
+    "merchant_name": "边界测试商户12（保底+提成）",
+    "type": "hybrid",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.13,
+    "min_guarantee": 10000,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM016-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = max(10000.00, 申报营业额 × 13.00%)",
+        "parameters": {
+          "commission_rate": 0.13,
+          "min_guarantee": 10000
+        }
+      },
+      {
+        "clause_id": "CTR-BM016-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM016-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM017",
+    "merchant_id": "BM017",
+    "merchant_name": "边界测试商户13（保底+提成）",
+    "type": "hybrid",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.14,
+    "min_guarantee": 11000,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM017-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = max(11000.00, 申报营业额 × 14.00%)",
+        "parameters": {
+          "commission_rate": 0.14,
+          "min_guarantee": 11000
+        }
+      },
+      {
+        "clause_id": "CTR-BM017-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM017-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM018",
+    "merchant_id": "BM018",
+    "merchant_name": "边界测试商户14（保底+提成）",
+    "type": "hybrid",
+    "category": "边界测试",
+    "fixed_amount": null,
+    "commission_rate": 0.15,
+    "min_guarantee": 12000,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM018-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = max(12000.00, 申报营业额 × 15.00%)",
+        "parameters": {
+          "commission_rate": 0.15,
+          "min_guarantee": 12000
+        }
+      },
+      {
+        "clause_id": "CTR-BM018-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM018-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM019",
+    "merchant_id": "BM019",
+    "merchant_name": "边界测试商户15（固定租金）",
+    "type": "fixed",
+    "category": "边界测试",
+    "fixed_amount": 8000,
+    "commission_rate": null,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM019-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 固定租金 8000.00 元",
+        "parameters": {
+          "fixed_amount": 8000
+        }
+      },
+      {
+        "clause_id": "CTR-BM019-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM019-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM020",
+    "merchant_id": "BM020",
+    "merchant_name": "边界测试商户16（固定租金）",
+    "type": "fixed",
+    "category": "边界测试",
+    "fixed_amount": 9000,
+    "commission_rate": null,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM020-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 固定租金 9000.00 元",
+        "parameters": {
+          "fixed_amount": 9000
+        }
+      },
+      {
+        "clause_id": "CTR-BM020-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM020-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM021",
+    "merchant_id": "BM021",
+    "merchant_name": "边界测试商户17（固定租金）",
+    "type": "fixed",
+    "category": "边界测试",
+    "fixed_amount": 10000,
+    "commission_rate": null,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM021-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 固定租金 10000.00 元",
+        "parameters": {
+          "fixed_amount": 10000
+        }
+      },
+      {
+        "clause_id": "CTR-BM021-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM021-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM022",
+    "merchant_id": "BM022",
+    "merchant_name": "边界测试商户18（固定租金）",
+    "type": "fixed",
+    "category": "边界测试",
+    "fixed_amount": 11000,
+    "commission_rate": null,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM022-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 固定租金 11000.00 元",
+        "parameters": {
+          "fixed_amount": 11000
+        }
+      },
+      {
+        "clause_id": "CTR-BM022-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM022-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM023",
+    "merchant_id": "BM023",
+    "merchant_name": "边界测试商户19（固定租金）",
+    "type": "fixed",
+    "category": "边界测试",
+    "fixed_amount": 12000,
+    "commission_rate": null,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM023-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 固定租金 12000.00 元",
+        "parameters": {
+          "fixed_amount": 12000
+        }
+      },
+      {
+        "clause_id": "CTR-BM023-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM023-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM024",
+    "merchant_id": "BM024",
+    "merchant_name": "边界测试商户20（固定租金）",
+    "type": "fixed",
+    "category": "边界测试",
+    "fixed_amount": 13500,
+    "commission_rate": null,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM024-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 固定租金 13500.00 元",
+        "parameters": {
+          "fixed_amount": 13500
+        }
+      },
+      {
+        "clause_id": "CTR-BM024-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM024-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  },
+  {
+    "contract_id": "CTR-BM025",
+    "merchant_id": "BM025",
+    "merchant_name": "边界测试商户21（固定租金）",
+    "type": "fixed",
+    "category": "边界测试",
+    "fixed_amount": 15000,
+    "commission_rate": null,
+    "min_guarantee": null,
+    "billing_cycle": "monthly",
+    "submit_deadline_day": 5,
+    "effective_date": "2026-01-01",
+    "end_date": "2026-12-31",
+    "clauses": [
+      {
+        "clause_id": "CTR-BM025-clause-001",
+        "clause_type": "rent_calculation",
+        "description": "租金计算方式：月租金 = 固定租金 15000.00 元",
+        "parameters": {
+          "fixed_amount": 15000
+        }
+      },
+      {
+        "clause_id": "CTR-BM025-clause-002",
+        "clause_type": "submission_deadline",
+        "description": "商户需在每月5日前提交上月营业报表",
+        "parameters": {
+          "deadline_day": 5
+        }
+      },
+      {
+        "clause_id": "CTR-BM025-clause-003",
+        "clause_type": "late_fee",
+        "description": "逾期提交按日收取滞纳金，日费率0.5%，宽限期3天",
+        "parameters": {
+          "late_fee_rate": 0.005,
+          "grace_days": 3
+        }
+      }
+    ]
+  }
+]

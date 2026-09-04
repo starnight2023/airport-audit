@@ -1,0 +1,37 @@
+# =============================================================================
+# .gitignore — Git 忽略规则
+# =============================================================================
+
+# 环境变量配置（含 API Key，切勿提交到 Git）
+.env
+
+# 生成数据（由 scripts/init_data.py 自动生成，无需提交）
+data/bills/
+data/contracts.json
+data/merchant_info.json
+data/truth_labels.json
+data/historical_disputes.json
+
+# Chroma 向量数据库（由 init_data.py 重建）
+chroma_db/
+
+# 生成式评测产物（由 evaluation/runner.py 生成，无需提交）
+evaluation/cache/
+evaluation/output/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# 虚拟环境
+.venv/
+venv/
+
+# 系统与 IDE 文件
+.DS_Store
+.idea/
+.vscode/
+# Claude Code 本地设置
+.claude/

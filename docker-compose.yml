@@ -1,0 +1,118 @@
+# =============================================================================
+# docker-compose.yml — 机场非航收入智能稽核系统
+# =============================================================================
+# 一键启动：
+#   docker compose up -d
+#
+# 启动后访问：
+#   Streamlit 前端: http://localhost:8502
+#   FastAPI 文档:  http://localhost:8001/docs
+#   FastAPI 健康:   http://localhost:8001/health
+#
+# 端口说明：
+#   - 宿主机 8001 → 容器 8000（FastAPI）
+#   - 宿主机 8502 → 容器 8501（Streamlit）
+#   - 容器内服务端口固定为 8000/8501，只改宿主机映射端口
+#
+# 停止：
+#   docker compose down
+#
+# 查看日志：
+#   docker compose logs -f
+#
+# 安全说明：
+#   - 镜像中不包含 DEEPSEEK_API_KEY（Dockerfile 不 COPY .env）
+#   - API Key 从宿主机 .env 文件注入（env_file），仅存在于部署环境
+# =============================================================================
+
+services:
+  # ==========================================
+  # 1. FastAPI 稽核服务
+  # ==========================================
+  api:
+    build:
+      context: .
+      target: api
+    container_name: airport-audit-api
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    volumes:
+      # 数据持久化：合同、账单、向量库
+      - data_volume:/app/data
+      - chroma_volume:/app/chroma_db
+      # HuggingFace 模型缓存（避免重复下载）
+      - huggingface_cache:/root/.cache/huggingface
+    environment:
+      - HF_ENDPOINT=https://hf-mirror.com
+      # DeepSeek API Key 通过宿主机 .env 注入，不写入镜像
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY:-}
+      - DEEPSEEK_BASE_URL=${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+      - DEEPSEEK_MODEL=${DEEPSEEK_MODEL:-deepseek-chat}
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 120s  # 首次启动时可能需要下载 BGE 模型
+      retries: 3
+    networks:
+      - airport-network
+    # 首次启动时初始化数据
+    command: >
+      sh -c "python scripts/init_data.py &&
+             uvicorn src.api:app --host 0.0.0.0 --port 8000"
+
+  # ==========================================
+  # 2. Streamlit 前端
+  # ==========================================
+  streamlit:
+    build:
+      context: .
+      target: streamlit
+    container_name: airport-audit-streamlit
+    restart: unless-stopped
+    ports:
+      - "8502:8501"
+    volumes:
+      - data_volume:/app/data
+      - chroma_volume:/app/chroma_db
+      - huggingface_cache:/root/.cache/huggingface
+    environment:
+      - HF_ENDPOINT=https://hf-mirror.com
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 120s
+      retries: 3
+    depends_on:
+      - api
+    networks:
+      - airport-network
+    # 首次启动时初始化数据，然后启动 Streamlit
+    command: >
+      sh -c "python scripts/init_data.py &&
+             streamlit run src/app.py --server.address=0.0.0.0 --server.port=8501"
+
+
+# ===========================================================================
+# 持久化卷定义
+# ===========================================================================
+volumes:
+  data_volume:
+    name: airport-audit-data
+  chroma_volume:
+    name: airport-audit-chroma
+  huggingface_cache:
+    name: airport-audit-hf-cache
+
+
+# ===========================================================================
+# 网络定义
+# ===========================================================================
+networks:
+  airport-network:
+    name: airport-audit-network
+    driver: bridge

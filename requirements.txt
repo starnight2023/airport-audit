@@ -1,0 +1,44 @@
+# =============================================================================
+# 机场非航收入智能稽核系统 — Python 依赖
+# =============================================================================
+# 安装方式：pip install -r requirements.txt
+#
+# 【阶段对应关系】
+# Phase 1 (当前): pandas, pyyaml, pytest       ← 本次安装
+# Phase 2:         chromadb, sentence-transformers, redis
+# Phase 3:         langgraph, langchain-core, openai
+# Phase 4:         fastapi, uvicorn, mcp
+# Phase 5:         streamlit, requests
+# Phase 6:         docker, docker-compose       (系统工具，非 pip)
+# =============================================================================
+
+# ---------- Phase 1 核心依赖 ----------
+pandas>=2.0.0           # 数据处理（可选，当前用 csv 模块替代，预留升级空间）
+pyyaml>=6.0             # YAML 配置加载
+pytest>=7.0             # 单元测试
+
+# ---------- Phase 2 核心依赖 ----------
+chromadb>=1.5.0           # 向量数据库
+sentence-transformers>=2.2.0  # 文本向量化（BGE-Small）
+rank-bm25>=0.2.2          # BM25 关键词检索（多路召回用）
+# redis>=5.0              # 缓存（当前使用 memory 后端，可选）
+
+# ---------- Phase 3 核心依赖 ----------
+langgraph>=1.0.0              # Agent 工作流编排
+langchain-core>=1.0.0         # LangChain 核心工具规范
+openai>=1.0.0                 # DeepSeek API 调用（兼容 OpenAI SDK）
+
+# ---------- Phase 4 核心依赖 ----------
+fastapi>=0.100.0          # RESTful API 框架
+uvicorn>=0.23.0           # ASGI 服务器
+mcp>=1.0.0                # MCP 协议 SDK
+python-dotenv>=1.0.0      # 环境变量加载
+
+# ---------- Phase 5 核心依赖 ----------
+streamlit>=1.28.0         # 可视化前端
+requests>=2.31.0          # HTTP 请求
+
+# ---------- 开发工具 ----------
+# black>=23.0           # 代码格式化
+# ruff>=0.1.0           # 代码检查
+# mypy>=1.0             # 类型检查
